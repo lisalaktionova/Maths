@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+def f(x):
+    return np.sin(2*x)
+
+def draw(f):
+    a = 0
+    b = math.pi
+    n = 100
+    x = np.linspace(a, b, n)
+    y = f(x)
+    plt.plot(x, y, 'b')
+    for i in range(n - 1):
+        x_i = x[i]
+        x_i_plus_1 = x[i + 1]
+        # j = (x_i + x_i_plus_1) / 2 #способы оснащения
+        # j = x_i
+        j = x_i_plus_1
+        plt.fill_between([x_i, x_i_plus_1], [0, 0], [f(j), f(j)], color='red', alpha=0.3)
+    plt.xlabel('x')
+    plt.ylabel('f(x)')
+    plt.title('Integral Sums')
+    plt.show()
+
+draw(f)
