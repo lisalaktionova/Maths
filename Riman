@@ -2,10 +2,28 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-def f(x):
+def f(x): #функция
     return np.sin(2*x)
 
-def draw(f):
+def sq(f): #считаем значение интегрируемой суммы
+    a = 0
+    b = math.pi
+    n = 100
+    x = np.linspace(a, b, n)
+    y = f(x)
+    s=0
+    plt.plot(x, y, 'b')
+    for i in range(n - 1):
+        x_i = x[i]
+        x_i_plus_1 = x[i + 1]
+        # j = np.random.choice
+        j = (x_i + x_i_plus_1) / 2 #способы оснащения
+        # j = x_i
+        # j = x_i_plus_1
+        s+=abs(f(j))*(x_i_plus_1-x_i)
+    return s
+
+def draw(f): #рисуем график
     a = 0
     b = math.pi
     n = 100
@@ -15,6 +33,7 @@ def draw(f):
     for i in range(n - 1):
         x_i = x[i]
         x_i_plus_1 = x[i + 1]
+        # j = np.random.choice
         # j = (x_i + x_i_plus_1) / 2 #способы оснащения
         # j = x_i
         j = x_i_plus_1
@@ -25,3 +44,4 @@ def draw(f):
     plt.show()
 
 draw(f)
+print(sq(f))
