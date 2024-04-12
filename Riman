@@ -1,3 +1,5 @@
+import random
+
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -8,7 +10,7 @@ def f(x): #функция
 def sq(f): #считаем значение интегрируемой суммы
     a = 0
     b = math.pi
-    n = 100
+    n = 20
     x = np.linspace(a, b, n)
     y = f(x)
     s=0
@@ -16,27 +18,27 @@ def sq(f): #считаем значение интегрируемой сумм�
     for i in range(n - 1):
         x_i = x[i]
         x_i_plus_1 = x[i + 1]
-        # j = np.random.choice
-        j = (x_i + x_i_plus_1) / 2 #способы оснащения
-        # j = x_i
-        # j = x_i_plus_1
+        # j = (x_i + x_i_plus_1) / 2 # среднее оснащение
+        # j = x_i # левое оснащение
+        # j = x_i_plus_1 # правое оснащение
+        j = random.random() * (x_i_plus_1 - x_i) + x_i # случайное оснащение
         s+=abs(f(j))*(x_i_plus_1-x_i)
     return s
 
 def draw(f): #рисуем график
     a = 0
     b = math.pi
-    n = 100
+    n = 20
     x = np.linspace(a, b, n)
     y = f(x)
     plt.plot(x, y, 'b')
     for i in range(n - 1):
         x_i = x[i]
         x_i_plus_1 = x[i + 1]
-        # j = np.random.choice
-        # j = (x_i + x_i_plus_1) / 2 #способы оснащения
-        # j = x_i
-        j = x_i_plus_1
+        # j = (x_i + x_i_plus_1) / 2 # среднее оснащение
+        # j = x_i # левое оснащение
+        # j = x_i_plus_1 # правое оснащение
+        j = random.random() * (x_i_plus_1 - x_i) + x_i # случайное оснащение
         plt.fill_between([x_i, x_i_plus_1], [0, 0], [f(j), f(j)], color='red', alpha=0.3)
     plt.xlabel('x')
     plt.ylabel('f(x)')
