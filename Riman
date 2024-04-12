@@ -39,7 +39,7 @@ def draw(f): #рисуем график
         # j = x_i # левое оснащение
         # j = x_i_plus_1 # правое оснащение
         j = random.random() * (x_i_plus_1 - x_i) + x_i # случайное оснащение
-        plt.fill_between([x_i, x_i_plus_1], [0, 0], [f(j), f(j)], color='red', alpha=0.3)
+        plt.fill_between([x_i, x_i_plus_1], 0, f(j), color='red', alpha=0.3)
     plt.xlabel('x')
     plt.ylabel('f(x)')
     plt.title('Integral Sums')
